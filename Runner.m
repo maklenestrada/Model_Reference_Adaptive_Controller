@@ -12,7 +12,7 @@ u0 = 0;
 q_ref0 = .001;
 
 %Simulation Run Time
-TF = 35;
+TF = 30;
 
 %Pitch Rate Command Sin Function
 % q_cmd = Apmplitude * sin ( Frequency * t)
@@ -50,7 +50,20 @@ Theta_ideal = -f_ideal;
 kq_ideal = kq_i*ones(length(t_ideal));
 k_cmd_ideal = k_cmd_i*ones(length(t_ideal));
 
-%Plot the Results 
+%% Resample Cpp Data
+q_cpp_interp = Cpp_Sim_Result(t);
+%% Plot the Results 
+
+figure
+hold on
+plot(t,q,'k','LineWidth',2)
+plot(t,q_cpp_interp,'b','LineWidth',2)
+hold off
+xlabel('Time (s)')
+ylabel('q (deg/s)')
+legend('Matlab & Simulink Model','C++ Model')
+grid on
+
 figure
 hold on
 plot(t,q,'k','LineWidth',2)

@@ -2,6 +2,8 @@ import numpy as np
 import math as m
 import matplotlib.pyplot as plt
 
+
+
 #Runga-Kutta 4 Integrator 
 def rk4(func, x,dt) :
     k1 = dt*func(x);
@@ -109,14 +111,14 @@ for t in np.arange(t0, t_end, step = dt):
 
 #Plots 
 plt.figure()
-plt.plot(t_arr, q_data);
+plt.plot(t_arr, q_data, color = 'r');
 plt.xlabel('Time(s)')
 plt.ylabel('q (deg/s)');
 plt.grid(visible=True);
 plt.show
 
 plt.figure()
-plt.plot(t_arr,q_ref_data);
+plt.plot(t_arr,q_ref_data, color = 'r');
 plt.xlabel('Time(s)')
 plt.ylabel('$q_{ref}$ (deg/s)')
 plt.grid(visible=True);
@@ -124,7 +126,7 @@ plt.title('Reference Model')
 plt.show
 
 plt.figure()
-plt.plot(t_arr,u_data);
+plt.plot(t_arr,u_data, color = 'r');
 plt.xlabel('Time(s)')
 plt.ylabel('Control Input');
 plt.grid(visible=True);
@@ -132,21 +134,28 @@ plt.show
 
 plt.figure()
 plt.subplot(3,1,1)
-plt.plot(t_arr,k_q_data);
+plt.plot(t_arr,k_q_data, color = 'r');
 plt.xlabel('Time (s)');
 plt.ylabel('$k_q$');
 plt.grid(visible=True);
 
 plt.subplot(3,1,2)
-plt.plot(t_arr,k_q_cmd_data);
+plt.plot(t_arr,k_q_cmd_data, color = 'r');
 plt.xlabel('Time (s)');
 plt.ylabel('$k_{q_{cmd}}$');
 plt.grid(visible=True);
 
 plt.subplot(3,1,3)
-plt.plot(t_arr,theta_data);
+plt.plot(t_arr,theta_data,color = 'r');
 plt.xlabel('Time (s)');
 plt.ylabel('$\Theta$');
 plt.grid(visible=True);
 plt.tight_layout()
 plt.show
+
+plt.figure()
+plt.plot(t_arr,e_data, color = "r");
+plt.xlabel('Time (s)');
+plt.ylabel('Error');
+plt.title('q - $q_{ref}$')
+plt.show()
